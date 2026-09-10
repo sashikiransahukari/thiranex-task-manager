@@ -1,0 +1,512 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    background: #2563eb;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    font-size: 22px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.username {
+    font-size: 14px;
+}
+
+.logout {
+    color: white;
+    text-decoration: none;
+    background: #1d4ed8;
+    padding: 9px 15px;
+    border-radius: 7px;
+    transition: 0.2s;
+}
+
+.logout:hover {
+    background: #1e40af;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 35px auto;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome {
+    margin-bottom: 25px;
+}
+
+.welcome h2 {
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+
+.welcome p {
+    color: #777;
+    font-size: 15px;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.statistics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #eff6ff;
+    border-radius: 10px;
+
+    font-size: 23px;
+}
+
+.stat-card h3 {
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+
+.stat-card p {
+    color: #777;
+    font-size: 14px;
+}
+
+
+/* =========================
+   CREATE TASK
+========================= */
+
+.create-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 35px;
+}
+
+.create-box h2 {
+    margin-bottom: 20px;
+    font-size: 21px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-family: inherit;
+
+    outline: none;
+
+    transition: border 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #2563eb;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.create-btn {
+    border: none;
+
+    background: #2563eb;
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.create-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   TASK LIST
+========================= */
+
+.tasks-title {
+    margin-bottom: 20px;
+    font-size: 21px;
+}
+
+.tasks-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================
+   TASK CARD
+========================= */
+
+.task-card {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.2s,
+                box-shadow 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* TASK HEADER */
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+.task-header h3 {
+    font-size: 18px;
+}
+
+
+/* PRIORITY BADGE */
+
+.priority-badge {
+    background: #f3e8ff;
+
+    color: #7e22ce;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+/* DESCRIPTION */
+
+.description {
+    color: #666;
+
+    margin-bottom: 15px;
+
+    line-height: 1.5;
+
+    font-size: 14px;
+}
+
+
+/* TASK INFORMATION */
+
+.task-info {
+    border-top: 1px solid #eee;
+
+    padding-top: 12px;
+
+    margin-top: 10px;
+}
+
+.task-info p {
+    margin-bottom: 7px;
+
+    font-size: 14px;
+}
+
+.status {
+    color: #2563eb;
+}
+
+.due-date {
+    color: #666;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.task-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 18px;
+
+    align-items: center;
+}
+
+.edit-btn {
+    background: #2563eb;
+
+    color: white;
+
+    padding: 9px 15px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.edit-btn:hover {
+    background: #1d4ed8;
+}
+
+.delete-btn {
+    background: #dc2626;
+
+    color: white;
+
+    padding: 9px 15px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background: #b91c1c;
+}
+
+
+/* =========================
+   EMPTY TASK MESSAGE
+========================= */
+
+.empty {
+    background: white;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    color: #777;
+
+    grid-column: 1 / -1;
+}
+
+.empty-icon {
+    font-size: 40px;
+
+    margin-bottom: 12px;
+}
+
+.empty h3 {
+    color: #333;
+
+    margin-bottom: 8px;
+}
+
+.empty p {
+    font-size: 14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+
+    padding: 25px;
+
+    color: #888;
+
+    font-size: 13px;
+
+    margin-top: 40px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .statistics {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 15px 4%;
+    }
+
+    .navbar h1 {
+        font-size: 18px;
+    }
+
+    .navbar-right {
+        gap: 8px;
+    }
+
+    .username {
+        display: none;
+    }
+
+    .container {
+        width: 92%;
+
+        margin:
+            25px auto;
+    }
+
+    .welcome h2 {
+        font-size: 23px;
+    }
+
+    .statistics {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .create-box {
+        padding: 20px;
+    }
+
+    .task-actions {
+        flex-wrap: wrap;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        padding: 9px 13px;
+    }
+}

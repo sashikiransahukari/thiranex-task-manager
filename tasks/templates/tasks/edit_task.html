@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .navbar {
+            background: #2563eb;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 15px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h1>Task Manager</h1>
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+
+    <main class="container">
+
+        <div class="box">
+
+            <h2>Edit Task</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label>Task Title</label>
+                    <input
+                        type="text"
+                        name="title"
+                        value="{{ task.title }}"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description">{{ task.description }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+
+                    <select name="status">
+                        <option value="pending"
+                            {% if task.status == "pending" %}selected{% endif %}>
+                            Pending
+                        </option>
+
+                        <option value="in_progress"
+                            {% if task.status == "in_progress" %}selected{% endif %}>
+                            In Progress
+                        </option>
+
+                        <option value="completed"
+                            {% if task.status == "completed" %}selected{% endif %}>
+                            Completed
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Priority</label>
+
+                    <select name="priority">
+                        <option value="low"
+                            {% if task.priority == "low" %}selected{% endif %}>
+                            Low
+                        </option>
+
+                        <option value="medium"
+                            {% if task.priority == "medium" %}selected{% endif %}>
+                            Medium
+                        </option>
+
+                        <option value="high"
+                            {% if task.priority == "high" %}selected{% endif %}>
+                            High
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Due Date</label>
+
+                    <input
+                        type="date"
+                        name="due_date"
+                        value="{{ task.due_date|date:'Y-m-d' }}"
+                    >
+                </div>
+
+                <button type="submit">
+                    Save Changes
+                </button>
+
+            </form>
+
+            <a href="{% url 'dashboard' %}" class="back">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
